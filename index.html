@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src = "//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js" ></script>
+
+    <script src="./components/rotation.js"></script>
+
+    <script src="./components/rings.js"></script>
+
+    <script src="./components/birds.js"></script>
+
+    <script src="./components/game.js"></script>
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+        <a-asset-item id = "t" src = "assets/models/terrain/scene.gltf"></a-asset-item>
+        <a-asset-item id = "p" src = "assets/models/airplane/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <!-- Terrain  -->
+      <a-entity 
+      id = "terrain" 
+      gltf-model = "#t" 
+      position = "0 0 0" 
+      scale = "" 
+      animation = "property: position; to: 0 0 1000; easing: linear; loop: true; dur: 150000"
+      terrain-rotation
+      rings
+      birds
+      static-body
+      ></a-entity>
+     
+      <!--- Plane -->
+      <a-entity id = "plane" gltf-model = "#p" position = "0 0 15" scale = "1 1" rotation = "0 90 0" plane-rotation dynamic-body = "mass: 0" game-play></a-entity>
+
+      <!--Headers-->
+      <a-entity  position = "1 4 0">
+      <a-entity
+        position= "0 10 0"
+        text = "font: monoid; width: 25; align: center; color: white; value: Flight-Stimulation">
+      </a-entity>
+
+      <!--Timer-->
+      <a-entity
+        position = "-30 10 0"
+        text = "font: monoid; width: 25; align: center; color: white; value: Timer">
+      </a-entity>
+      <a-entity 
+        id = "timer"
+        position = "-30 8.5 0"
+        text = "font: monoid; width: 25; align: center; color: white; value: 00:00"
+      ></a-entity>
+
+      <!--score-->
+      <a-entity
+        position = "-26 10 0"
+        text= "font:monoid; width: 25; align: center; color: white; value: Score"
+      ></a-entity>
+      <a-entity
+        id = "score"
+        position = "-26 8.5 0"
+        text = "font:monoid; width: 25; align: center; color: white; value: 0"
+      ></a-entity>
+
+      <!--target-->
+      <a-entity
+        position = "-22 10 0"
+        text= "font:monoid; width: 25; align: center; color: white; value: Targets"
+      ></a-entity>
+      <a-entity
+        id = "target"
+        position = "-22 8.5 0"
+        text = "font:monoid; width: 25; align: center; color: white; value: 0"
+      ></a-entity>
+      
+      <!--Game over-->
+      <a-entity
+        id = "over"
+        position = "0 0 0"
+        text = "font:monoid; width: 100; align: center; color: yellow; value: Game Over!!!" visible = "false"      
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>

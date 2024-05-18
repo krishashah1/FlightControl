@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device=width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src = "//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js" ></script>
+</head>
+<body>
+    <a-scene physics = "debug: true, friction: 0.01; restitution: 1">
+        <a-entity camera position = "0 1.5 15"></a-entity>
+
+        <a-torus color = "blue" position = "-3 0 0" dynamic-body = "shape: sphere; sphereRadius:2"></a-torus>
+        <a-sphere radius = "1" color= "white" dynamic-body = "shape:box"></a-sphere>
+        <a-box color="green" scale="20 1 20" position = "2.5 -5 0" static-body></a-box>
+    </a-scene>
+</body>
+</html>
